@@ -1,0 +1,62 @@
+{% load static %}
+<div class="header-top-three">
+    <div class="auto-container">
+        <div class="clearfix">
+            <div class="top-left pull-left clearfix">
+                {% if site_settings.hiring_banner %}
+                <div class="text">{{ site_settings.hiring_banner }}</div>
+                {% endif %}
+            </div>
+            <div class="top-right pull-right clearfix">
+                {% if site_settings.signup_url %}
+                <div class="sign-btn">
+                    <a href="{{ site_settings.signup_url }}">Sign Up</a>
+                </div>
+                {% endif %}
+                <ul class="social-box">
+                    {% if site_settings.facebook_url %}<li><a target="_blank" href="{{ site_settings.facebook_url }}" class="fab fa-facebook-f"></a></li>{% endif %}
+                    {% if site_settings.google_url %}<li><a target="_blank" href="{{ site_settings.google_url }}" class="fab fa-google"></a></li>{% endif %}
+                    {% if site_settings.twitter_url %}<li><a target="_blank" href="{{ site_settings.twitter_url }}" class="fab fa-twitter"></a></li>{% endif %}
+                    {% if site_settings.pinterest_url %}<li><a target="_blank" href="{{ site_settings.pinterest_url }}" class="fab fa-pinterest-p"></a></li>{% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-upper">
+    <div class="auto-container">
+        <div class="inner-container clearfix">
+            <div class="pull-left logo-box">
+                <div class="logo">
+                    <a href="{% url 'home' %}">
+                        <img src="{{ site_settings.logo_url }}" alt="{{ site_settings.company_name }}" style="width: 100px; height: 100px;">
+                    </a>
+                </div>
+            </div>
+            <div class="pull-right upper-right clearfix">
+                <div class="upper-column info-box">
+                    <div class="icon-box"><span class="flaticon-telephone"></span></div>
+                    <ul>
+                        <li><strong>Address</strong></li>
+                        <li>{{ site_settings.address }}</li>
+                    </ul>
+                </div>
+                <div class="upper-column info-box">
+                    <div class="icon-box"><span class="flaticon-send"></span></div>
+                    <ul>
+                        <li><strong>Mon - Fri</strong></li>
+                        <li>{{ site_settings.business_hours }}</li>
+                    </ul>
+                </div>
+                <div class="upper-column info-box">
+                    <div class="icon-box"><span class="flaticon-email"></span></div>
+                    <ul>
+                        <li><strong>Make a Call</strong></li>
+                        <li>{{ site_settings.phone }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+{% load static %}
+<section class="software-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+            {% for item in downloads %}
+            <div class="software-block col-lg-6 col-md-6 col-sm-12">
+                <div class="inner-box" style="background-image:url({% static 'images/background/pattern-30.png' %})">
+                    <a href="{{ item.download_href }}" class="overlay-link"></a>
+                    <div class="content">
+                        <div class="icon"><img src="{{ item.icon_url }}" alt="" /></div>
+                        <div class="title">{{ item.title }}</div>
+                        <h5>{{ item.subtitle }}</h5>
+                        <div class="download">{{ item.file_size_label }}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

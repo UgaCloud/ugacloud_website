@@ -1,0 +1,30 @@
+{% load static %}
+<div class="row clearfix">
+    {% for project in projects %}
+    <div class="project-block-three masonry-item col-lg-4 col-md-6 col-sm-12">
+        <div class="inner-box">
+            <figure class="image-box">
+                <img src="{{ project.get_image_url }}" alt="{{ project.title }}">
+                <div class="overlay-content">
+                    <div class="content-inner">
+                        <h5>{{ project.title }}</h5>
+                        <div class="designation">{{ project.category }}</div>
+                        <div class="plus fa fa-plus"></div>
+                    </div>
+                </div>
+                <div class="overlay-box">
+                    <div class="overlay-inner">
+                        <div class="content">
+                            <a href="{{ project.get_image_url }}" data-fancybox="gallery-1" data-caption="{{ project.title }}" class="link"><span class="icon flaticon-full-screen"></span></a>
+                            <h4><a href="{% url 'project_detail' project.slug %}">{{ project.title }}</a></h4>
+                            <div class="category">{{ project.category }}</div>
+                        </div>
+                    </div>
+                </div>
+            </figure>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12"><p>No projects yet. Add them in the admin panel.</p></div>
+    {% endfor %}
+</div>

@@ -1,0 +1,22 @@
+{% load static %}
+<section class="clients-section">
+    <div class="auto-container">
+        <div class="inner-container">
+            <div class="sponsors-outer">
+                <ul class="sponsors-carousel owl-carousel owl-theme">
+                    {% for client in clients %}
+                    <li class="slide-item">
+                        <figure class="image-box">
+                            <a href="{{ client.url|default:'#' }}">
+                                <img src="{{ client.get_image_url }}" alt="{{ client.name }}">
+                            </a>
+                        </figure>
+                    </li>
+                    {% empty %}
+                    <li class="slide-item"><figure class="image-box"><img src="{% static 'images/clients/1.png' %}" alt=""></figure></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

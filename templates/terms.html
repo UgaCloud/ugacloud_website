@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{{ legal_page.title }} | {{ site_settings.site_title }}</title>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="preloader"></div>
+    <header class="main-header header-style-three">
+        {% include 'main/header-upper.html' %}
+        {% include 'main/nav.html' %}
+        {% include 'main/mobile-menu.html' %}
+    </header>
+
+    <section class="page-title-two">
+        <div class="auto-container">
+            <h2>{{ legal_page.title }}</h2>
+            <ul class="page-breadcrumb">
+                <li><a href="{% url 'home' %}">home</a></li>
+                <li>{{ legal_page.title|lower }}</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="privacy-section">
+        <div class="auto-container">
+            <div class="text-content">{{ legal_page.content|linebreaks }}</div>
+        </div>
+    </section>
+
+    {% include 'partials/clients_section.html' %}
+    {% include 'partials/downloads_section.html' %}
+    {% include 'main/footer.html' %}
+</div>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/jquery.scrollTo.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/tilt.jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery.paroller.min.js' %}"></script>
+<script src="{% static 'js/parallax.min.js' %}"></script>
+<script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+<script src="{% static 'js/jquery.fancybox.js' %}"></script>
+<script src="{% static 'js/appear.js' %}"></script>
+<script src="{% static 'js/owl.js' %}"></script>
+<script src="{% static 'js/wow.js' %}"></script>
+<script src="{% static 'js/isotope.js' %}"></script>
+<script src="{% static 'js/pagenav.js' %}"></script>
+<script src="{% static 'js/nav-tool.js' %}"></script>
+<script src="{% static 'js/jquery-ui.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/color-settings.js' %}"></script>
+</body>
+</html>

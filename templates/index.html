@@ -1,0 +1,493 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{{ site_settings.site_title }}</title>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+<link href="{% static 'css/color-switcher-design.css' %}" rel="stylesheet">
+<link rel="shortcut icon" href="{{ site_settings.logo_url }}" type="image/x-icon">
+<link rel="icon" href="{{ site_settings.logo_url }}" type="image/x-icon">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="">
+
+<div class="page-wrapper">
+    <div class="preloader"></div>
+
+    <header class="main-header header-style-three">
+        {% include 'main/header-upper.html' %}
+        {% include 'main/homenav.html' %}
+        {% include 'main/mobile-menu.html' %}
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="main-slider-three" id="home">
+        <div class="banner-carousel owl-carousel owl-theme">
+            {% for slide in hero_slides %}
+            <div class="slide" style="background-image:url({{ slide.background_url }})">
+                <div class="pattern-layer-one" style="background-image:url({% static 'images/main-slider/pattern-7.png' %})"></div>
+                <div class="auto-container">
+                    <div class="row clearfix">
+                        <div class="image-column col-lg-6 col-md-12 col-sm-12">
+                            <div class="inner-column">
+                                
+                                <div class="image">
+                                    <img src="{{ slide.slide_image_url }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-column col-lg-6 col-md-12 col-sm-12">
+                            <div class="inner-column">
+                                <h1>{% if slide.headline_html %}{{ slide.headline_html|safe }}{% else %}{{ slide.headline }}{% endif %}</h1>
+                                {% if slide.description %}<div class="text">{{ slide.description|linebreaksbr }}</div>{% endif %}
+                                <div class="btn-box">
+                                    <div class="btns-inner clearfix">
+                                        <a href="{{ slide.cta_url }}" class="theme-btn btn-style-six"><span class="txt">{{ slide.cta_text }}</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="slide" style="background-image:url({% static 'images/main-slider/1.jpg' %})">
+                <div class="auto-container"><h1>Welcome to {{ site_settings.company_name }}</h1></div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about-section-three" id="about">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="content-column col-lg-6 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        <div class="sec-title style-three">
+                            {% if about.eyebrow %}<div class="title">{{ about.eyebrow }}</div>{% endif %}
+                            <h2>{{ about.title }}</h2>
+                            <div class="text">{{ about.body }}</div>
+                        </div>
+                        {% if about.skill_name %}
+                        <div class="skills style-two">
+                            <div class="skill-item">
+                                <div class="skill-header clearfix">
+                                    <div class="skill-title">{{ about.skill_name }}</div>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="bar-inner">
+                                        <div class="bar progress-line" data-width="{{ about.skill_percent }}"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-percentage"><div class="count-box"><span class="count-text" data-speed="2000" data-stop="{{ about.skill_percent }}">0</span>%</div></div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if about.bullets %}
+                        <ul class="list-style-two">
+                            {% for bullet in about.bullets %}<li>{{ bullet }}</li>{% endfor %}
+                        </ul>
+                        {% endif %}
+                        <div class="signature">
+                            <img src="{{ about.signature_url }}" alt="">
+                        </div>
+                        <div class="year-box-outer">
+                            <div class="icon-box"><div class="icon flaticon-woman"></div></div>
+                            <div class="year-box-inner">
+                                <div class="year-count-outer year-count-box count-box">
+                                    <span class="count-text year-count-text" data-speed="4000" data-stop="{{ about.since_year }}">0</span>
+                                    Since Working
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="image-column col-lg-6 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        {% if features %}
+                        <div class="blocks-outer">
+                            <div class="row clearfix">
+                                {% for feature in features %}
+                                <div class="feature-block-two col-lg-6 col-md-6 col-sm-12">
+                                    <div class="inner-box">
+                                        <div class="icon {{ feature.icon_class }}"></div>
+                                        <h6>{{ feature.title }}</h6>
+                                        <div class="text">{{ feature.description }}</div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="image">
+                            <img src="{{ about.main_image_url }}" alt="">
+                            <div class="pattern-layer" style="background-image:url({% static 'images/background/pattern-22.png' %})"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Counters -->
+    <section class="counter-section-two" style="background-image:url({% static 'images/background/pattern-23.png' %})">
+        <div class="auto-container">
+            {% if counter_heading %}
+            <div class="sec-title style-three centered">
+                {% if counter_heading.eyebrow %}<div class="title">{{ counter_heading.eyebrow }}</div>{% endif %}
+                <h2>{{ counter_heading.title|linebreaksbr }}</h2>
+            </div>
+            {% endif %}
+            <div class="row clearfix">
+                <div class="counter-column col-lg-8 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        <div class="fact-counter-two">
+                            <div class="row clearfix">
+                                {% for counter in counters %}
+                                <div class="column counter-column col-lg-6 col-md-6 col-sm-12">
+                                    <div class="inner wow fadeInLeft">
+                                        <div class="content">
+                                            <div class="icon {{ counter.icon_class }}"></div>
+                                            <div class="count-outer count-box">
+                                                <span class="count-text" data-speed="4000" data-stop="{{ counter.value }}">0</span>{{ counter.suffix }}
+                                            </div>
+                                            <h4 class="counter-title">{{ counter.label }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="story-column col-lg-4 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        <div class="icon {{ success_story.icon_class }}"></div>
+                        <div class="count-outer count-box">
+                            <span class="count-text" data-speed="4000" data-stop="{{ success_story.value }}">0</span><i>{{ success_story.suffix }}</i>
+                        </div>
+                        <div class="text">{{ success_story.text }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services-section-three" style="background-image:url({% static 'images/background/pattern-24.png' %})" id="services">
+        <div class="left-color-layer"></div>
+        <div class="right-color-layer"></div>
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="title-column col-lg-4 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        {% if services_heading %}
+                        <div class="sec-title light style-three">
+                            {% if services_heading.eyebrow %}<div class="title">{{ services_heading.eyebrow }}</div>{% endif %}
+                            <h2>{{ services_heading.title|linebreaksbr }}</h2>
+                            {% if services_heading.description %}<div class="text">{{ services_heading.description|linebreaksbr }}</div>{% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="blocks-column col-lg-8 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        <div class="services-carousel-three owl-carousel owl-theme">
+                            {% for service in services %}
+                            <div class="service-block-three">
+                                <div class="inner-box">
+                                    <div class="image">
+                                        <a href="{% url 'home' %}#services"><img src="{{ service.image_url }}" alt="{{ service.title }}"></a>
+                                    </div>
+                                    <div class="lower-content">
+                                        <div class="content-inner">
+                                            <div class="icon {{ service.icon_class }}"></div>
+                                            <div class="category">{{ service.category }}</div>
+                                            <h4><a href="{% url 'home' %}#services">{{ service.title }}</a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team-section-two" id="team">
+        <div class="auto-container">
+            {% if team_heading %}
+            <div class="sec-title style-three centered">
+                {% if team_heading.eyebrow %}<div class="title">{{ team_heading.eyebrow }}</div>{% endif %}
+                <h2>{{ team_heading.title|linebreaksbr }}</h2>
+            </div>
+            {% endif %}
+            <div class="row clearfix">
+                {% for member in team_members %}
+                <div class="team-block-two col-lg-3 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="image">
+                            <a href="{% url 'team_detail' member.slug %}"><img src="{{ member.get_image_url }}" alt="{{ member.name }}"></a>
+                            <div class="social-boxed">
+                                <ul class="social-box">
+                                    {% if member.facebook_url %}<li><a href="{{ member.facebook_url }}" class="fab fa-facebook-f"></a></li>{% endif %}
+                                    {% if member.dribbble_url %}<li><a href="{{ member.dribbble_url }}" class="fab fa-dribbble"></a></li>{% endif %}
+                                    {% if member.twitter_url %}<li><a href="{{ member.twitter_url }}" class="fab fa-twitter"></a></li>{% endif %}
+                                    {% if member.google_url %}<li><a href="{{ member.google_url }}" class="fab fa-google"></a></li>{% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="lower-content">
+                            <h3><a href="{% url 'team_detail' member.slug %}">{{ member.name }}</a></h3>
+                            <div class="designation">{{ member.role }}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects-section-two" id="projects">
+        <div class="pattern-layer-one" style="background-image:url({% static 'images/background/pattern-25.png' %})"></div>
+        <div class="auto-container">
+            {% if projects_heading %}
+            <div class="sec-title style-three centered">
+                {% if projects_heading.eyebrow %}<div class="title">{{ projects_heading.eyebrow }}</div>{% endif %}
+                <h2>{{ projects_heading.title|linebreaksbr }}</h2>
+            </div>
+            {% endif %}
+            <div class="masonry-items-container row clearfix">
+                {% for project in projects %}
+                <div class="project-block-three masonry-item col-lg-4 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <figure class="image-box">
+                            <img src="{{ project.get_image_url }}" alt="{{ project.title }}">
+                            <div class="overlay-content">
+                                <div class="content-inner">
+                                    <h5>{{ project.title }}</h5>
+                                    <div class="designation">{{ project.category }}</div>
+                                    <div class="plus fa fa-plus"></div>
+                                </div>
+                            </div>
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="{{ project.get_image_url }}" data-fancybox="gallery-1" data-caption="{{ project.title }}" class="link"><span class="icon flaticon-full-screen"></span></a>
+                                        <h4><a href="{% url 'project_detail' project.slug %}">{{ project.title }}</a></h4>
+                                        <div class="category">{{ project.category }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="lower-text text-center">
+                <div class="text">Want to see more of our work? <a href="{% url 'projects' %}">View all projects</a>.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials + Contact -->
+    <section class="default-section" style="background-image:url({% static 'images/background/pattern-26.png' %})">
+        <div class="pattern-layer" style="background-image:url({% static 'images/background/pattern-27.png' %})"></div>
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="carousel-column col-lg-6 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        {% if testimonials_heading %}
+                        <div class="sec-title style-three">
+                            {% if testimonials_heading.eyebrow %}<div class="title">{{ testimonials_heading.eyebrow }}</div>{% endif %}
+                            <h2>{{ testimonials_heading.title|linebreaksbr }}</h2>
+                            <div class="signature"><img src="{% static 'images/icons/signature-1.png' %}" alt=""></div>
+                        </div>
+                        {% endif %}
+                        <div class="bold-text">Best service ever we recommend!..</div>
+                        <div class="single-item-carousel owl-carousel owl-theme">
+                            {% for testimonial in testimonials %}
+                            <div class="testimonial-block-two">
+                                <div class="inner-box">
+                                    <div class="pattern-layer-two" style="background-image:url({% static 'images/background/pattern-28.png' %})"></div>
+                                    <div class="pattern-layer-three" style="background-image:url({% static 'images/background/pattern-29.png' %})"></div>
+                                    <div class="quote-icon flaticon-quote"></div>
+                                    <div class="author-thumb">
+                                        <img src="{{ testimonial.get_image_url }}" alt="{{ testimonial.author_name }}">
+                                    </div>
+                                    <div class="text">{{ testimonial.quote }}</div>
+                                    <div class="designation">{{ testimonial.author_name }}{% if testimonial.author_role %}, <span>{{ testimonial.author_role }}</span>{% endif %}</div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-column col-lg-6 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        <div class="sec-title style-three">
+                            <div class="title">Get In Touch</div>
+                            <h2>Contact With Us</h2>
+                        </div>
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-success">{{ message }}</div>
+                        {% endfor %}
+                        {% endif %}
+                        <div class="default-form style-two">
+                            <form method="post" action="{% url 'home' %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <span class="icon flaticon-user"></span>
+                                    {{ contact_form.name }}
+                                </div>
+                                <div class="form-group">
+                                    <span class="icon flaticon-email-2"></span>
+                                    {{ contact_form.email }}
+                                </div>
+                                <div class="form-group">
+                                    <span class="icon flaticon-chat-bubbles-with-ellipsis"></span>
+                                    {{ contact_form.subject }}
+                                </div>
+                                <div class="form-group">
+                                    {{ contact_form.message }}
+                                </div>
+                                <div class="clearfix">
+                                    <div class="pull-left">
+                                        <div class="form-group">
+                                            <button type="submit" class="theme-btn submit-btn"><span class="txt">Submit Now</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section class="news-section-three" id="blog">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="title-column col-lg-4 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        {% if blog_heading %}
+                        <div class="sec-title style-three">
+                            {% if blog_heading.eyebrow %}<div class="title">{{ blog_heading.eyebrow }}</div>{% endif %}
+                            <h2>{{ blog_heading.title|linebreaksbr }}</h2>
+                        </div>
+                        {% if blog_heading.description %}
+                        <div class="text">{{ blog_heading.description|linebreaks }}</div>
+                        {% endif %}
+                        {% endif %}
+                        <a href="{% url 'blog' %}" class="theme-btn btn-style-six"><span class="txt">View All News</span></a>
+                    </div>
+                </div>
+                <div class="news-column col-lg-8 col-md-12 col-sm-12">
+                    <div class="inner-column">
+                        <div class="row clearfix">
+                            {% if featured_post %}
+                            <div class="column col-lg-6 col-md-6 col-sm-12">
+                                <div class="news-block-three">
+                                    <div class="inner-box">
+                                        <div class="image">
+                                            <img src="{{ featured_post.get_image_url }}" alt="{{ featured_post.title }}" />
+                                            <div class="post-date">{{ featured_post.formatted_date }}</div>
+                                            <div class="overlay-box">
+                                                <div class="overlay-inner">
+                                                    <div class="content">
+                                                        <a href="{% url 'blog_detail' featured_post.slug %}" class="icon flaticon-unlink"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="lower-content">
+                                            <ul class="post-meta">
+                                                <li><span class="icon fa fa-user"></span> {{ featured_post.author }}</li>
+                                            </ul>
+                                            <h3><a href="{% url 'blog_detail' featured_post.slug %}">{{ featured_post.title }}</a></h3>
+                                            <div class="text">{{ featured_post.excerpt }}</div>
+                                            <a href="{% url 'blog_detail' featured_post.slug %}" class="theme-btn read-more">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            <div class="column col-lg-6 col-md-6 col-sm-12">
+                                {% for post in sidebar_posts %}
+                                <div class="news-block-four">
+                                    <div class="inner-box">
+                                        <ul class="post-meta">
+                                            <li><span class="icon fa fa-user"></span> {{ post.author }}</li>
+                                        </ul>
+                                        <h3><a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a></h3>
+                                        <div class="text">{{ post.excerpt }}</div>
+                                        <div class="clearfix">
+                                            <div class="pull-left">
+                                                <a href="{% url 'blog_detail' post.slug %}" class="theme-btn read-more">Read More</a>
+                                            </div>
+                                            <div class="pull-left">
+                                                <div class="post-date">{{ post.formatted_date }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'partials/clients_section.html' %}
+    {% include 'partials/downloads_section.html' %}
+    {% include 'main/footer.html' %}
+</div>
+
+<div class="search-popup">
+    <button class="close-search style-two"><span class="flaticon-cancel-1"></span></button>
+    <button class="close-search"><span class="flaticon-up-arrow"></span></button>
+    <form method="get" action="{% url 'blog' %}">
+        <div class="form-group">
+            <input type="search" name="q" value="" placeholder="Search Here" required>
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+    </form>
+</div>
+
+<div class="back-to-top scroll-to-target show-back-to-top" data-target="html">TOP</div>
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/jquery.scrollTo.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/tilt.jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery.paroller.min.js' %}"></script>
+<script src="{% static 'js/parallax.min.js' %}"></script>
+<script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+<script src="{% static 'js/jquery.fancybox.js' %}"></script>
+<script src="{% static 'js/appear.js' %}"></script>
+<script src="{% static 'js/owl.js' %}"></script>
+<script src="{% static 'js/wow.js' %}"></script>
+<script src="{% static 'js/isotope.js' %}"></script>
+<script src="{% static 'js/pagenav.js' %}"></script>
+<script src="{% static 'js/nav-tool.js' %}"></script>
+<script src="{% static 'js/jquery-ui.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/color-settings.js' %}"></script>
+</body>
+</html>

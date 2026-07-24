@@ -1,0 +1,19 @@
+{% load static %}
+
+<div class="footer-bottom">
+			<div class="auto-container">
+				<div class="row clearfix">
+					<div class="column col-lg-6 col-md-12 col-sm-12">
+						<div class="copyright">{{ site_settings.copyright_text }}</div>
+					</div>
+					<div class="column col-lg-6 col-md-12 col-sm-12">
+						<ul class="footer-nav">
+							<li><a href="{% url 'terms' %}">Term Of Use</a></li>
+							<li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+

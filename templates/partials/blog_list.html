@@ -1,0 +1,36 @@
+{% load static %}
+<div class="row clearfix">
+    {% for post in posts %}
+    <div class="news-block col-lg-4 col-md-6 col-sm-12">
+        <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+            <div class="image">
+                <img src="{{ post.get_image_url }}" alt="{{ post.title }}" />
+                <div class="overlay-box">
+                    <div class="overlay-inner">
+                        <div class="content">
+                            <a href="{% url 'blog_detail' post.slug %}" class="icon flaticon-unlink"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lower-content">
+                <ul class="post-meta">
+                    <li><span class="icon fa fa-user"></span> {{ post.author }}</li>
+                </ul>
+                <h3><a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a></h3>
+                <div class="text">{{ post.excerpt }}</div>
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <a href="{% url 'blog_detail' post.slug %}" class="theme-btn read-more">Read More</a>
+                    </div>
+                    <div class="pull-left">
+                        <div class="post-date">{{ post.formatted_date }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12"><p>No blog posts yet. Add them in the admin panel.</p></div>
+    {% endfor %}
+</div>

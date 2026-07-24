@@ -1,0 +1,83 @@
+{% load static %}
+<footer class="footer-style-two">
+    <div class="map-layer" style="background-image: url({% static 'images/background/pattern-31.png' %})"></div>
+    <div class="upper-box">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="info-box col-lg-4 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="icon-box"><span class="flaticon-telephone"></span></div>
+                        <ul>
+                            <li><strong>Address</strong></li>
+                            <li>{{ site_settings.address }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="info-box col-lg-4 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="icon-box"><span class="flaticon-send"></span></div>
+                        <ul>
+                            <li><strong>Phone:</strong></li>
+                            <li><a href="tel:{{ site_settings.phone }}">{{ site_settings.phone }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="info-box col-lg-4 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="icon-box"><span class="flaticon-email"></span></div>
+                        <ul>
+                            <li><strong>Email:</strong></li>
+                            <li><a href="mailto:{{ site_settings.email }}">{{ site_settings.email }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="auto-container">
+        <div class="widgets-section">
+            <div class="row clearfix">
+                <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                    <div class="footer-widget logo-widget">
+                        <div class="logo">
+                            <a href="{% url 'home' %}">
+                                <img src="{{ site_settings.logo_url }}" alt="{{ site_settings.company_name }}" style="width: 200px; height: 200px;"></a>
+                        </div>
+                        <div class="text">{{ site_settings.footer_about }}</div>
+                        <ul class="social-box">
+                            {% if site_settings.facebook_url %}<li><a href="{{ site_settings.facebook_url }}" class="fab fa-facebook-f"></a></li>{% endif %}
+                            {% if site_settings.twitter_url %}<li><a href="{{ site_settings.twitter_url }}" class="fab fa-twitter"></a></li>{% endif %}
+                            {% if site_settings.google_url %}<li><a href="{{ site_settings.google_url }}" class="fab fa-linkedin-in"></a></li>{% endif %}
+                            {% if site_settings.pinterest_url %}<li><a href="{{ site_settings.pinterest_url }}" class="fab fa-instagram"></a></li>{% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                    <div class="footer-widget links-widget">
+                        <h3>Quick Links</h3>
+                        <ul class="list-link">
+                            <li><a href="{% url 'home' %}#about">About</a></li>
+                            <li><a href="{% url 'home' %}#services">Services</a></li>
+                            <li><a href="{% url 'team' %}">Team</a></li>
+                            <li><a href="{% url 'projects' %}">Projects</a></li>
+                            <li><a href="{% url 'blog' %}">Blog</a></li>
+                            <li><a href="{% url 'contact' %}">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                    <div class="footer-widget newsletter-widget">
+                        <h3>Get In Touch</h3>
+                        <div class="text">Contact us for a free consultation about your next project.</div>
+                        <div class="newsletter-form">
+                            <a href="{% url 'contact' %}" class="theme-btn btn-style-two"><span class="txt">Contact Us</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'main/footer-bottom.html' %}
+</footer>

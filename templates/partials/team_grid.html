@@ -1,0 +1,26 @@
+{% load static %}
+<div class="row clearfix">
+    {% for member in team_members %}
+    <div class="team-block-two col-lg-3 col-md-6 col-sm-12">
+        <div class="inner-box">
+            <div class="image">
+                <a href="{% url 'team_detail' member.slug %}"><img src="{{ member.get_image_url }}" alt="{{ member.name }}"></a>
+                <div class="social-boxed">
+                    <ul class="social-box">
+                        {% if member.facebook_url %}<li><a href="{{ member.facebook_url }}" class="fab fa-facebook-f"></a></li>{% endif %}
+                        {% if member.dribbble_url %}<li><a href="{{ member.dribbble_url }}" class="fab fa-dribbble"></a></li>{% endif %}
+                        {% if member.twitter_url %}<li><a href="{{ member.twitter_url }}" class="fab fa-twitter"></a></li>{% endif %}
+                        {% if member.google_url %}<li><a href="{{ member.google_url }}" class="fab fa-google"></a></li>{% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div class="lower-content">
+                <h3><a href="{% url 'team_detail' member.slug %}">{{ member.name }}</a></h3>
+                <div class="designation">{{ member.role }}</div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12"><p>No team members yet. Add them in the admin panel.</p></div>
+    {% endfor %}
+</div>

@@ -1,0 +1,56 @@
+{% load static %}
+
+<div class="header-lower">
+            
+            <div class="auto-container">
+                <!-- Nav Outer -->
+				<div class="nav-outer clearfix">
+					
+					<!-- Mobile Navigation Toggler For Mobile -->
+					<div class="mobile-nav-toggler"><span class="icon flaticon-menu"></span></div>
+					<!-- End Mobile Navigation Toggler For Mobile -->
+					
+					<!-- Main Menu -->
+					<nav class="main-menu navbar-expand-md">
+						<div class="navbar-header">
+							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+
+						<div class="navbar-collapse scroll-nav collapse clearfix" id="navbarSupportedContent">
+							<ul class="navigation clearfix">
+								<li><a href="{% url 'home' %}">Home</a></li>
+								<li><a href="{% url 'home' %}#about">About us</a></li>
+								<li><a href="{% url 'home' %}#services">Services</a></li>
+								<li><a href="{% url 'team' %}">Team</a></li>
+								<li><a href="{% url 'projects' %}">Projects</a></li>
+								<li><a href="{% url 'blog' %}">Our Blog</a></li>
+								<li><a href="{% url 'contact' %}">Contact us</a></li>
+							</ul>
+						</div>
+						
+					</nav>
+					
+					<!-- Main Menu End-->
+					<div class="outer-box clearfix">
+					
+						<!-- Button Box -->
+						<div class="btn-box">
+							<a href="{% url 'contact' %}" class="theme-btn btn-style-one"><span class="txt">Get a Quote</span></a>
+						</div>
+						<!-- End Button Box -->
+						
+					</div>
+				
+				</div>
+            </div>
+        </div>
+
+
+
+
+
+

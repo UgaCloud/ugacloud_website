@@ -1,0 +1,277 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{{ page_title }} | {{ site_settings.site_title }}</title>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+<link rel="shortcut icon" href="{{ site_settings.logo_url }}" type="image/x-icon">
+<link rel="icon" href="{{ site_settings.logo_url }}" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="preloader"></div>
+    <header class="main-header header-style-three">
+        {% include 'main/header-upper.html' %}
+        {% include 'main/nav.html' %}
+        {% include 'main/mobile-menu.html' %}
+    </header>
+
+    <section class="page-title-two">
+        <div class="auto-container">
+            <h2>{{ page_title }}</h2>
+            <ul class="page-breadcrumb">
+                <li><a href="{% url 'home' %}">home</a></li>
+                {% if post %}<li><a href="{% url 'blog' %}">blog</a></li><li>{{ post.title|truncatechars:30 }}</li>
+                {% elif project %}<li><a href="{% url 'projects' %}">projects</a></li><li>{{ project.title|truncatechars:30 }}</li>
+                {% endif %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- Sidebar Page Container -->
+    <div class="sidebar-page-container">
+    	<div class="auto-container">
+        	<div class="row clearfix">
+				
+				<!-- Content Side -->
+                <div class="content-side col-lg-8 col-md-12 col-sm-12">
+                	<div class="blog-detail">
+
+						<div class="inner-box">
+                            {% if post.get_image_url %}
+                                <div class="image">
+                                    <img src="{{ post.get_image_url }}" alt="" />
+                                    <div class="post-date">{{ post.formatted_date }}</div>
+                                </div>
+                            {% endif %}
+							<div class="lower-content">
+								<ul class="post-meta">
+									<li><span class="icon fa fa-user"></span> {{ post.author }}</li>
+								</ul>
+								<h3>{{ post.title }}</h3>
+								<p>{{ post.body|linebreaks }}</p>
+								
+								
+			
+                                <!-- Post Share Options-->
+								<div class="post-share-options">
+									<div class="post-share-inner clearfix">
+										<div class="pull-left tags"><a href="#">Marketing</a> <a href="#">BUSINESS</a><a href="#">TRAINING</a><a href="#">CONSULTING</a></div>
+										<ul class="social-box pull-right">
+											<li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+											<li><a href="#"><span class="fab fa-twitter"></span></a></li>
+											<li><a href="#"><span class="fab fa-google"></span></a></li>
+											<li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+                       
+						
+						<!-- Blog New Posts -->
+						<div class="blog-new-posts">
+							<div class="clearfix">
+								<div class="pull-left">
+									<a class="prev" href="blog.html"><figure><img src="images/resource/post-thumb-8.jpg" alt="" /></figure><span>Friendly Horses Are <br> Born This Way</span> <i class="fa fa-angle-double-left"></i> Previous</a>
+								</div>
+								<div class="pull-right">
+									<a href="blog.html" class="next-post"><figure><img src="images/resource/post-thumb-9.jpg" alt="" /></figure><span>How to Introduce <br> New Horses</span> Next <i class="fa fa-angle-double-right"></i></a>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Comments Area -->
+						<div class="comments-area">
+							<div class="group-title">
+								<h4>Recent Comments</h4>
+							</div>
+							
+							<div class="comment-box">
+								<div class="comment">
+									<div class="author-thumb"><img src="images/resource/author-1.jpg" alt=""></div>
+									<div class="comment-info clearfix"><strong>Anna Sthesia</strong><div class="comment-time">Jan 28, 2020</div></div>
+									<div class="text">The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</div>
+									<a class="theme-btn reply-btn" href="#"> Reply</a>
+								</div>
+							</div>
+							
+							<div class="comment-box reply-comment">
+								<div class="comment">
+									<div class="author-thumb"><img src="images/resource/author-2.jpg" alt=""></div>
+									<div class="comment-info clearfix"><strong>Paul Molive </strong><div class="comment-time">Mar 01, 2020</div></div>
+									<div class="text">The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</div>
+									<a class="theme-btn reply-btn" href="#"> Reply</a>
+								</div>
+							</div>
+							
+							<div class="comment-box">
+								<div class="comment">
+									<div class="author-thumb"><img src="images/resource/author-3.jpg" alt=""></div>
+									<div class="comment-info clearfix"><strong>Mouna Sthesia </strong><div class="comment-time">Apr 28, 2020</div></div>
+									<div class="text">The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</div>
+									<a class="theme-btn reply-btn" href="#"> Reply</a>
+								</div>
+							</div>
+							
+						</div>
+						
+						<!-- Comment Form -->
+						<div class="comment-form">
+							<div class="group-title"><h4>Leave Comment</h4></div>
+							
+							<!--Comment Form-->
+							<form method="post" action="blog.html">
+								<div class="row clearfix">
+									
+									<div class="col-lg-6 col-md-6 col-sm-12 form-group">
+										<input type="text" name="username" placeholder="Full Name*" required>
+									</div>
+									
+									<div class="col-lg-6 col-md-6 col-sm-12 form-group">
+										<input type="email" name="email" placeholder="Email Address*" required>
+									</div>
+									
+									<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+										<input type="text" name="subject" placeholder="Subject" required>
+									</div>
+									
+									<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+										<textarea class="" name="message" placeholder="Massage"></textarea>
+									</div>
+									
+									<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+										<button class="theme-btn btn-style-one" type="submit" name="submit-form"><span class="txt">Submit Your Comment</span></button>
+									</div>
+									
+								</div>
+							</form>
+								
+						</div>
+						<!--End Comment Form -->
+						
+					</div>
+				</div>
+				
+				<!-- Sidebar Side -->
+                <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+                	<aside class="sidebar sticky-top">
+						
+						<!-- Search -->
+                        <div class="sidebar-widget search-box">
+							<div class="sidebar-title">
+                                <h3>Searching</h3>
+                            </div>
+							<div class="widget-content">
+								<form method="post" action="contact.html">
+									<div class="form-group">
+										<input type="search" name="search-field" value="" placeholder="Search here..." required>
+										<button type="submit"><span class="icon fa fa-search"></span></button>
+									</div>
+								</form>
+							</div>
+						</div>
+						
+						<!-- Categories Widget -->
+						<div class="sidebar-widget categories-widget">
+							<div class="sidebar-title">
+								<h3>News Catogaries</h3>
+							</div>
+							<div class="widget-content">
+								<ul class="blog-cat-two">
+									<li><a href="design-review.html">Data Center <span>05</span></a></li>
+									<li class="active"><a href="#">Product Design <span>10</span></a></li>
+									<li><a href="design-review.html">Analytic Solutions  <span>25</span></a></li>
+									<li><a href="design-review.html">Web Development  <span>30</span></a></li>
+									<li><a href="design-review.html">Artificial Intelligence <span>12</span></a></li>
+									<li><a href="design-review.html">Software Development <span>05</span></a></li>
+								</ul>
+							</div>
+						</div>
+						
+						<!-- Popular Posts -->
+                        <div class="sidebar-widget popular-posts">
+                            <div class="sidebar-title"><h3>Recent Posts</h3></div>
+							<div class="widget-content">
+								<div class="posts-outer">
+									<article class="post">
+										<figure class="post-thumb"><img src="images/resource/post-thumb-5.jpg" alt=""><a href="news-detail.html" class="overlay-box"><span class="icon fa fa-link"></span></a></figure>
+										<div class="text"><a href="news-detail.html">We Offers Successful Business Plans</a></div>
+										<div class="post-info">February 28, 2021</div>
+									</article>
+
+									<article class="post">
+										<figure class="post-thumb"><img src="images/resource/post-thumb-6.jpg" alt=""><a href="news-detail.html" class="overlay-box"><span class="icon fa fa-link"></span></a></figure>
+										<div class="text"><a href="news-detail.html">Great ideas From Company’s Assets</a></div>
+										<div class="post-info">March 05, 2021</div>
+									</article>
+									
+									<article class="post">
+										<figure class="post-thumb"><img src="images/resource/post-thumb-7.jpg" alt=""><a href="news-detail.html" class="overlay-box"><span class="icon fa fa-link"></span></a></figure>
+										<div class="text"><a href="news-detail.html">Collaboration Bringing Business</a></div>
+										<div class="post-info">April 08, 2021</div>
+									</article>
+								</div>
+							</div>
+                        </div>
+						
+						<!-- Popular Posts -->
+						<div class="sidebar-widget popular-tags">
+							<div class="sidebar-title">
+								<h3>Could Tags</h3>
+							</div>
+							<div class="tags-outer">
+								<a href="#">Marketing</a>
+								<a href="#">Business</a>
+								<a href="#">Training</a>
+								<a href="#">Consulting</a>
+								<a href="#">Deeds</a>
+								<a href="#">Strategy</a>
+								<a href="#">Sme</a>
+								<a href="#">Tips</a>
+								<a href="#">Financial</a>
+							</div>
+						</div>
+						
+					</aside>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+    <!-- <section class="blog-detail-section">
+        <div class="auto-container">
+            {% if post %}
+            <div class="inner-box">
+                {% if post.get_image_url %}<div class="image"><img src="{{ post.get_image_url }}" alt="{{ post.title }}"></div>{% endif %}
+                <ul class="post-meta">
+                    <li><span class="icon fa fa-user"></span> {{ post.author }}</li>
+                    <li>{{ post.formatted_date }}</li>
+                </ul>
+                <h2>{{ post.title }}</h2>
+                <div class="text">{{ post.body|linebreaks }}</div>
+            </div>
+            {% elif project %}
+            <div class="inner-box">
+                {% if project.get_image_url %}<div class="image"><img src="{{ project.get_image_url }}" alt="{{ project.title }}"></div>{% endif %}
+                <div class="category">{{ project.category }}</div>
+                <h2>{{ project.title }}</h2>
+                <div class="text">{{ project.description|linebreaks }}</div>
+            </div>
+            {% endif %}
+        </div>
+    </section> -->
+
+    {% include 'main/footer.html' %}
+</div>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{{ page_title }} | {{ site_settings.site_title }}</title>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+<link href="{% static 'css/color-switcher-design.css' %}" rel="stylesheet">
+<link rel="shortcut icon" href="{{ site_settings.logo_url }}" type="image/x-icon">
+<link rel="icon" href="{{ site_settings.logo_url }}" type="image/x-icon">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="preloader"></div>
+    <header class="main-header header-style-three">
+        {% include 'main/header-upper.html' %}
+        {% include 'main/nav.html' %}
+        {% include 'main/mobile-menu.html' %}
+    </header>
+
+    <section class="page-title-two">
+        <div class="pattern-layer-one" style="background-image: url({% static 'images/background/pattern-34.png' %})"></div>
+        <div class="pattern-layer-two" style="background-image: url({% static 'images/background/pattern-35.png' %})"></div>
+        <div class="auto-container">
+            <h2>{% if page_heading %}{{ page_heading.title }}{% else %}{{ page_title }}{% endif %}</h2>
+            <ul class="page-breadcrumb">
+                <li><a href="{% url 'home' %}">home</a></li>
+                <li>{{ page_title|lower }}</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="team-section-two">
+        <div class="auto-container">
+            {% if team_heading %}
+            <div class="sec-title style-three centered">
+                {% if team_heading.eyebrow %}<div class="title">{{ team_heading.eyebrow }}</div>{% endif %}
+                <h2>{{ team_heading.title|linebreaksbr }}</h2>
+            </div>
+            {% endif %}
+            {% include 'partials/team_grid.html' %}
+        </div>
+    </section>
+
+    	<!-- Team Section -->
+	{% include 'partials/stats.html' %}
+	<!-- End Team Section -->
+	
+	<!-- CTA Section Four -->
+	{% include 'partials/CTA.html' %}
+	<!-- End CTA Section Four -->
+
+    {% include 'partials/clients_section.html' %}
+    {% include 'partials/downloads_section.html' %}
+    {% include 'main/footer.html' %}
+</div>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/jquery.scrollTo.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/tilt.jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery.paroller.min.js' %}"></script>
+<script src="{% static 'js/parallax.min.js' %}"></script>
+<script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+<script src="{% static 'js/jquery.fancybox.js' %}"></script>
+<script src="{% static 'js/appear.js' %}"></script>
+<script src="{% static 'js/owl.js' %}"></script>
+<script src="{% static 'js/wow.js' %}"></script>
+<script src="{% static 'js/isotope.js' %}"></script>
+<script src="{% static 'js/pagenav.js' %}"></script>
+<script src="{% static 'js/nav-tool.js' %}"></script>
+<script src="{% static 'js/jquery-ui.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/color-settings.js' %}"></script>
+</body>
+</html>

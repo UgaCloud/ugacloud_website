@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{{ member.name }} | {{ site_settings.site_title }}</title>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+<link rel="shortcut icon" href="{{ site_settings.logo_url }}" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="preloader"></div>
+    <header class="main-header header-style-three">
+        {% include 'main/header-upper.html' %}
+        {% include 'main/nav.html' %}
+        {% include 'main/mobile-menu.html' %}
+    </header>
+
+    <section class="page-title-two">
+        <div class="auto-container">
+            <h2>{{ member.name }}</h2>
+            <ul class="page-breadcrumb">
+                <li><a href="{% url 'home' %}">home</a></li>
+                <li><a href="{% url 'team' %}">team</a></li>
+                <li>{{ member.name }}</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- Team Detail Section -->
+	<section class="team-single-section">
+		<div class="auto-container">
+			<div class="row clearfix">
+				
+				<!-- Image Column -->
+				<div class="image-column col-lg-4 col-md-12 col-sm-12">
+					<div class="inner-column wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+						<div class="image">
+							<img src="{{ member.get_image_url }}" alt="{{ member.name }}" />
+						</div>
+					</div>
+				</div>
+				
+				<!-- Content Column -->
+				<div class="content-column col-lg-8 col-md-12 col-sm-12">
+					<div class="inner-column">
+						<h2>{{ member.name }} <span class="category">{{ member.role }}</span></h2>
+						<ul class="post-meta">
+							<li><span class="icon flaticon-email-2"></span> <a href="mailto:{{ member.email }}">{{ member.email }}</a></li>
+							<li><span class="icon flaticon-call-2"></span> <a href="tel:{{ member.phone }}">{{ member.phone }}</a></li>
+							<li><span class="icon flaticon-call-1"></span> <a href="tel:{{ member.phone }}">{{ member.phone }}</a></li>
+						</ul>
+						<div class="text">
+							<p>{{ member.bio|linebreaks }}</p>
+
+						</div>
+						
+						<!-- Social Box -->
+						<ul class="social-box">
+							<li><a target="_blank" href="http://facebook.com/" class="fab fa-facebook-f"></a></li>
+							<li><a target="_blank" href="http://twitter.com/" class="fab fa-google"></a></li>
+							<li><a target="_blank" href="http://twitter.com/" class="fab fa-twitter"></a></li>
+							<li><a target="_blank" href="http://instagram.com/" class="fab fa-pinterest-p"></a></li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</section>
+	<!-- End Team Detail Section -->
+	
+	<!-- CTA Section Four -->
+	<section class="cta-section-four" style="background-image:url(images/background/3.jpg)">
+		<div class="auto-container">
+			<div class="content">
+				<h2>Preparing for your success trusted <br> source in IT services.</h2>
+				<a href="contact.html" class="theme-btn btn-style-four"><span class="txt">Contact Now</span></a>
+			</div>
+		</div>
+	</section>
+	<!-- End CTA Section Four -->
+
+
+   
+
+    {% include 'main/footer.html' %}
+</div>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/jquery.scrollTo.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/tilt.jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery.paroller.min.js' %}"></script>
+<script src="{% static 'js/parallax.min.js' %}"></script>
+<script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+<script src="{% static 'js/jquery.fancybox.js' %}"></script>
+<script src="{% static 'js/appear.js' %}"></script>
+<script src="{% static 'js/owl.js' %}"></script>
+<script src="{% static 'js/wow.js' %}"></script>
+<script src="{% static 'js/isotope.js' %}"></script>
+<script src="{% static 'js/pagenav.js' %}"></script>
+<script src="{% static 'js/nav-tool.js' %}"></script>
+<script src="{% static 'js/jquery-ui.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/color-settings.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{% load static %}
+<div class="mobile-menu">
+    <div class="menu-backdrop"></div>
+    <div class="close-btn"><span class="icon flaticon-cancel"></span></div>
+    <nav class="menu-box">
+        <div class="nav-logo"><a href="{% url 'home' %}"><img src="{{ site_settings.mobile_logo_url }}" alt="{{ site_settings.company_name }}"></a></div>
+        <ul class="navigation clearfix"></ul>
+    </nav>
+</div>
