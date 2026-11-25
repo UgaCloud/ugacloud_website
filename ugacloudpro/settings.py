@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-apm*ot)sv93k8z!4e7ua$n++)x2(6cjh**5@7#lmax&^5#3u@l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'testserver']
 
@@ -33,7 +34,6 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'testserver']
 INSTALLED_APPS = [
 
     'jazzmin',
-
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -83,10 +83,19 @@ WSGI_APPLICATION = 'ugacloudpro.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ugacwihf_ugacloud_db',
+        'USER': 'ugacwihf_ugacloud_user',
+        'PASSWORD': 'X=GFx@$(iv#N_87J',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
+
 
 
 # Password validation
